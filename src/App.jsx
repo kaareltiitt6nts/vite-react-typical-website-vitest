@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Login from './components/Login/Login'
 import Home from './components/Home/Home'
+import AuthContext from './store/AuthContext'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(() => {
@@ -44,11 +45,18 @@ function App() {
 
   return (
     <Fragment>
-      <Navbar isAuthenticated={loggedIn} onLogout={logoutHandler}/>
-      <main>
-        {!loggedIn && <Login onLogin={loginHandler}/>}
-        {loggedIn && <Home/>}
-      </main>
+      <AuthContext.Provider value={
+        {
+          loggedIn: loggedIn,
+          onLogout: logoutHandler
+        }
+      }>
+        <Navbar onLogout={logoutHandler}/>
+        <main>
+          {!loggedIn && <Login onLogin={loginHandler}/>}
+          {loggedIn && <Home/>}
+        </main>
+      </AuthContext.Provider>
     </Fragment>
   )
 }
