@@ -1,0 +1,21 @@
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+ul li a {
+    color: white;
+    font-size: large;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    color: rgb(235, 235, 235);
+}
+
+ul li a:active {
+    color: rgb(216, 216, 216);
+}
